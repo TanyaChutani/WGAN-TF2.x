@@ -1,6 +1,7 @@
 import tensorflow as tf
 import numpy as np
 import matplotlib.pyplot as plt
+import tensorflow_datasets as tfds
 
 from wgan.data.create_data import image_preprocessing,real_data_generator
 from wgan.losses.wgan_loss import Wasserstein_Loss
@@ -58,22 +59,18 @@ class Wasserstein_GAN(tf.keras.models.Model):
 
 
 
-
 def main():
-  batch_size = 64
-  epochs = 20 
+  batch_size = 128
+  epochs = 30 
   latent_dim = 128
   critic_steps = 5
   clip_value=0.01
-
-  (x_train, y_train), (x_test, y_test) = tf.keras.datasets.mnist.load_data()
-
-  wgan_filter = tf.equal(y_train,1)
-  x_train = x_train[wgan_filter]
-  y_train = y_train[wgan_filter]
-
-  discriminator_real_dataset = real_data_generator(x_train,y_train,batch_size)
-
+  image_width,image_height = 256,256
+  train_len = 126227
+  val_len = 300
+  train_dataset = tfds.load('lsun/church_outdoor', split='train')
+  
+  discriminator_real_image = real_data_generator(train_dataset,batch_size)
   critic_model = Critic(clip_value=clip_value)
   
   generator_model = Generator()
@@ -85,11 +82,13 @@ def main():
                           latent_dim=latent_dim,
                           critic_steps=critic_steps)
   w_gan.generator_model.build((None,latent_dim))
-  w_gan.critic_model.build((None,28,28,1))
+  w_gan.critic_model.build((None,image_width,image_height,3))
 
   w_gan.compile(c_optimizer=tf.keras.optimizers.RMSprop(0.00005),
                 g_optimizer = tf.keras.optimizers.RMSprop(0.00005))
-  w_gan.fit(discriminator_real_dataset,epochs=epochs,steps_per_epoch=len(x_train)//batch_size)
-  w_gan.generator_model.save('wgan_checkpoint/my_model')
+  w_gan.fit(discriminator_real_image,epochs=epochs,steps_per_epoch=int(train_len)//batch_size)
+  w_gan.generator_model.save('wgan_checkpoint_generator/')
+  w_gan.critic_model.save('wgan_checkpoint_critic/')
+
 if __name__=='__main__':
   main()
