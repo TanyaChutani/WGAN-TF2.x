@@ -1,5 +1,5 @@
 # WGAN-TF2.x
-A Tensorflow implementation of "Wasserstein GAN"
+A Tensorflow implementation of "Wasserstein GAN" (https://arxiv.org/abs/1701.07875)
 
 ## Requirements
 - tensorflow 2.3.0
@@ -8,4 +8,6 @@ A Tensorflow implementation of "Wasserstein GAN"
 - matplotlib 3.2.2
 
 ## Generated Images
+
+
 
