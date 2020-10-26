@@ -1,10 +1,12 @@
+
+
 import tensorflow as tf
 import numpy as np
 import matplotlib.pyplot as plt
 
 
 class Generator(tf.keras.models.Model):
-    def __init__(self):
+    def __init__(self,weights=None):
         super(Generator, self).__init__()
         self.weight_init = tf.keras.initializers.RandomNormal()
         self.reshape_layer = tf.keras.layers.Reshape((1, 1, 100))
@@ -25,6 +27,13 @@ class Generator(tf.keras.models.Model):
 
         self.tanh_layer = tf.keras.layers.Activation(tf.nn.tanh)
         self.relu_layer = tf.keras.layers.Activation(tf.nn.relu)
+        if weights:
+          try:
+              print('weights path: ', weights)
+              self.load_weights(weights)
+          except Exception:
+              raise ValueError
+
 
     def call(self, input_tensor, training=None):
         x = self.reshape_layer(input_tensor)
