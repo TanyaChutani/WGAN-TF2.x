@@ -1,6 +1,8 @@
 # WGAN-TF2.x
 A Tensorflow implementation of "Wasserstein GAN" (https://arxiv.org/abs/1701.07875)
 
+![](https://raw.githubusercontent.com/TanyaChutani/WGAN-TF2/master/wgan.png)
+
 ## Requirements
 - tensorflow 2.3.0
 - python 3.6.9
