@@ -1,5 +1,3 @@
-
-
 import tensorflow as tf
 import numpy as np
 import matplotlib.pyplot as plt
@@ -29,7 +27,7 @@ class Generator(tf.keras.models.Model):
         self.relu_layer = tf.keras.layers.Activation(tf.nn.relu)
         if weights:
           try:
-              print('weights path: ', weights)
+              print('restoring generator weights from: ', weights)
               self.load_weights(weights)
           except Exception:
               raise ValueError
@@ -91,18 +89,18 @@ class Critic(tf.keras.models.Model):
         self.dense_layer = tf.keras.layers.Dense(1, activation='linear')
         self.lrelu_layer = tf.keras.layers.LeakyReLU(0.2)
 
-    def call(self, input_tensor):
+    def call(self, input_tensor, training=None):
         x = self.conv_layer1(input_tensor)
-        x = self.bn_layer1(x)
+        x = self.bn_layer1(x, training=training)
         x = self.lrelu_layer(x)
         x = self.conv_layer2(x)
-        x = self.bn_layer2(x)
+        x = self.bn_layer2(x, training=training)
         x = self.lrelu_layer(x)
         x = self.conv_layer3(x)
-        x = self.bn_layer3(x)
+        x = self.bn_layer3(x, training=training)
         x = self.lrelu_layer(x)
         x = self.conv_layer4(x)
-        x = self.bn_layer4(x)
+        x = self.bn_layer4(x, training=training)
         x = self.lrelu_layer(x)
         x = self.conv_layer5(x)
         x = self.flatten_layer(x)
