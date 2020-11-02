@@ -10,8 +10,13 @@ A Tensorflow implementation of "Wasserstein GAN" (https://arxiv.org/abs/1701.078
 - matplotlib 3.2.2
 
 ## Dataset
-![Download from here](https://www.kaggle.com/spandan2/cats-faces-64x64-for-generative-models)
+[Download](https://www.kaggle.com/spandan2/cats-faces-64x64-for-generative-models)
 
 ## Generated Images
 ![](https://raw.githubusercontent.com/TanyaChutani/WGAN-TF2/master/results/download.png)
 
+## Wgan Weights
+[Download](https://drive.google.com/drive/folders/1vsp0Wbwcot1cHOfwYCR6kvtGmrmplwav?usp=sharing)
+
+## Wgan Weights
+[Download](https://drive.google.com/drive/folders/1-GLLigsV1XLxxnaD1y_hx60MDIaW67Zh?usp=sharing)
