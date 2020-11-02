@@ -18,5 +18,5 @@ A Tensorflow implementation of "Wasserstein GAN" (https://arxiv.org/abs/1701.078
 ## Wgan Weights
 [Download](https://drive.google.com/drive/folders/1vsp0Wbwcot1cHOfwYCR6kvtGmrmplwav?usp=sharing)
 
-## Wgan Weights
+## Wgan Generatot Weights
 [Download](https://drive.google.com/drive/folders/1-GLLigsV1XLxxnaD1y_hx60MDIaW67Zh?usp=sharing)
