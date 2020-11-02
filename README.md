@@ -9,8 +9,8 @@ A Tensorflow implementation of "Wasserstein GAN" (https://arxiv.org/abs/1701.078
 - numpy 1.18.5
 - matplotlib 3.2.2
 
-## Dataset Used
-![](https://www.kaggle.com/spandan2/cats-faces-64x64-for-generative-models)
+## Dataset
+![Download from here](https://www.kaggle.com/spandan2/cats-faces-64x64-for-generative-models)
 
 ## Generated Images
 ![](https://raw.githubusercontent.com/TanyaChutani/WGAN-TF2/master/results/download.png)
